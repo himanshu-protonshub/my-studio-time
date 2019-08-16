@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190816122423) do
+ActiveRecord::Schema.define(version: 20190816123204) do
 
   create_table "booking_breakdowns", force: :cascade do |t|
     t.float "price_per_hour"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20190816122423) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subscription_id"
+    t.boolean "is_verified"
     t.index ["subscription_id"], name: "index_studios_on_subscription_id"
   end
 
