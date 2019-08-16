@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190816113804) do
+ActiveRecord::Schema.define(version: 20190816122423) do
 
   create_table "booking_breakdowns", force: :cascade do |t|
     t.float "price_per_hour"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20190816113804) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_breakdowns_on_booking_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -29,6 +30,8 @@ ActiveRecord::Schema.define(version: 20190816113804) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_bookings_on_studio_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 20190816113804) do
     t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_payments_on_country_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -87,6 +91,8 @@ ActiveRecord::Schema.define(version: 20190816113804) do
     t.integer "studio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_studio_addresses_on_country_id"
+    t.index ["studio_id"], name: "index_studio_addresses_on_studio_id"
   end
 
   create_table "studios", force: :cascade do |t|
@@ -104,6 +110,7 @@ ActiveRecord::Schema.define(version: 20190816113804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subscription_id"
+    t.index ["subscription_id"], name: "index_studios_on_subscription_id"
   end
 
   create_table "studios_types", force: :cascade do |t|
